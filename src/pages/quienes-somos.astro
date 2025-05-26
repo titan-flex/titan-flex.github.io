@@ -1,0 +1,170 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Container from "../components/shared/Container.astro";
+import Title2 from "../components/shared/Title2.astro";
+import SubTitle2 from "../components/shared/SubTitle2.astro";
+import GradiantText from "../components/shared/GradiantText.astro";
+import Paragraph from "../components/shared/Paragraph.astro";
+import Title3 from "../components/shared/Title3.astro";
+---
+
+<Layout title="Quienes Somos - Titan Flex">
+  <main class="pt-32 pb-16 flex flex-col gap-y-20 md:gap-y-32 overflow-hidden">
+    <!-- Historia de la Empresa -->
+    <section id="historia" class="pt-10">
+      <Container>
+        <div class="max-w-3xl mx-auto text-center mb-12">
+          <Title3>
+            <GradiantText>Historia</GradiantText> de la Empresa
+          </Title3>
+        </div>
+        <div class="max-w-4xl mx-auto">
+          <Paragraph className="mb-6">
+            Titan Flex nace como una respuesta a las crecientes necesidades del sector industrial en Latinoamérica, con un enfoque claro: ofrecer soluciones confiables y de alta calidad en sistemas de conducción de fluidos. Aunque la empresa es joven, su esencia está construida sobre la experiencia y la trayectoria de un equipo con años en el rubro.
+          </Paragraph>
+          <Paragraph className="mb-6">
+            Fundada por Kevin Nahuel Alcaraz, Titan Flex surge con el respaldo de profesionales altamente calificados y apasionados por la excelencia técnica. Desde sus inicios, la compañía se ha dedicado a la fabricación de mangueras industriales y terminales, desarrollando productos a medida que responden a los más altos estándares del sector. Además, Titan Flex es importador de mangueras hidráulicas, ampliando así su capacidad de respuesta y ofreciendo un catálogo integral para múltiples aplicaciones industriales.
+          </Paragraph>
+          <Paragraph className="mb-6">
+            La visión de Titan Flex es clara: ser un referente en soluciones industriales, combinando innovación, calidad y un servicio personalizado. Cada producto que sale de su línea de fabricación refleja el compromiso con la seguridad, la durabilidad y el rendimiento que las industrias demandan.
+          </Paragraph>
+          <Paragraph className="mb-6">
+            En un mercado competitivo, lo que diferencia a Titan Flex es su enfoque técnico, su agilidad operativa y la confianza que genera al trabajar con un equipo que conoce de cerca las necesidades del cliente. Aquí, la experiencia no se improvisa: se transmite en cada proyecto, en cada asesoramiento, en cada solución.
+          </Paragraph>
+          <Paragraph className="mb-6">
+            Titan Flex no solo busca crecer: busca crear valor sostenible, construyendo relaciones a largo plazo con sus clientes y siendo un aliado estratégico en cada etapa del camino industrial.
+          </Paragraph>
+        </div>
+      </Container>
+    </section>
+
+    <!-- Misión y Visión -->
+    <section id="mision-vision" class="bg-base-100 dark:bg-base-dark-900 py-16">
+      <Container>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+          <!-- Misión -->
+          <div>
+            <Title3 className="mb-6 text-center md:text-left">
+              <GradiantText>Nuestra</GradiantText> Misión
+            </Title3>
+            <Paragraph>
+              La misión de Titan Flex es brindar soluciones eficientes, seguras y de calidad en conducción de fluidos, adaptándose a las necesidades específicas de cada cliente. Nos impulsa el compromiso de ser un socio estratégico para las industrias, aportando productos duraderos, tecnología de vanguardia y un servicio técnico especializado que genera confianza y valor a largo plazo.
+            </Paragraph>
+          </div>
+          
+          <!-- Visión -->
+          <div>
+            <Title3 className="mb-6 text-center md:text-left">
+              <GradiantText>Nuestra</GradiantText> Visión
+            </Title3>
+            <Paragraph className="mb-4">
+              La visión de Titan Flex es clara: ser un referente en soluciones industriales, combinando innovación, calidad y un servicio personalizado. Cada producto que sale de su línea de fabricación refleja el compromiso con la seguridad, la durabilidad y el rendimiento que las industrias demandan.
+            </Paragraph>
+            <Paragraph>
+              En un mercado competitivo, lo que diferencia a Titan Flex es su enfoque técnico, su agilidad operativa y la confianza que genera al trabajar con un equipo que conoce de cerca las necesidades del cliente. Aquí, la experiencia no se improvisa: se transmite en cada proyecto, en cada asesoramiento, en cada solución.
+            </Paragraph>
+          </div>
+        </div>
+      </Container>
+    </section>
+
+    <!-- Años de Experiencia -->
+    <section id="experiencia">
+      <Container>
+        <div class="max-w-3xl mx-auto text-center mb-12">
+          <SubTitle2>
+            <GradiantText>Más de 12 años</GradiantText> al servicio de la industria
+          </SubTitle2>
+        </div>
+        <div class="max-w-4xl mx-auto">
+          <Paragraph className="mb-6">
+            En Titan Flex, contamos con más de 12 años de experiencia acumulada en la industria de la fabricación de mangueras y terminales, así como en la importación de mangueras hidráulicas. Este tiempo ha sido clave para consolidarnos como una empresa sólida y confiable, capaz de enfrentar los desafíos del mercado industrial con eficacia y compromiso.
+          </Paragraph>
+          <Paragraph className="mb-6">
+            A lo largo de estos años, hemos trabajado estrechamente con una amplia variedad de sectores, desde la construcción hasta la industria petroquímica, pasando por el sector agrícola, entre otros. Cada experiencia ha sido una oportunidad para perfeccionar nuestros procesos, conocer mejor las necesidades de nuestros clientes y, sobre todo, innovar en las soluciones que ofrecemos.
+          </Paragraph>
+          <Paragraph className="mb-6">
+            Nuestra trayectoria se refleja en el constante crecimiento que hemos tenido, no solo en volumen de producción, sino también en calidad, tecnología y satisfacción del cliente. Gracias a esta vasta experiencia, podemos garantizar que cada manguera, terminal y componente fabricado cumple con los más altos estándares del mercado.
+          </Paragraph>
+        </div>
+      </Container>
+    </section>
+    
+    <!-- Diferenciales -->
+    <section id="diferenciales" class="bg-base-200 dark:bg-base-dark-800 py-16 rounded-t-3xl">
+      <Container>
+        <div class="max-w-3xl mx-auto text-center mb-12">
+          <SubTitle2>
+            <GradiantText>¿Por qué</GradiantText> elegirnos?
+          </SubTitle2>
+        </div>
+        
+        <Paragraph className="max-w-4xl mx-auto mb-12">
+          En Titan Flex, nos distinguimos de otras empresas del sector por varios factores clave que nos permiten ofrecer soluciones únicas y de alta calidad a nuestros clientes. Aquí te contamos algunas de las razones por las cuales somos la elección preferida:
+        </Paragraph>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Diferencial 1 -->
+          <div class="bg-base-100 dark:bg-base-dark-900 p-6 rounded-xl shadow-lg">
+            <Title3 className="mb-4 text-center">
+              Experiencia y equipo especializado
+            </Title3>
+            <Paragraph>
+              Con más de 12 años de experiencia, nuestro equipo no solo tiene un amplio conocimiento técnico, sino que entiende profundamente las necesidades específicas de cada industria. Cada manguera y terminal que fabricamos está respaldado por años de experiencia, innovación y dedicación.
+            </Paragraph>
+          </div>
+          
+          <!-- Diferencial 2 -->
+          <div class="bg-base-100 dark:bg-base-dark-900 p-6 rounded-xl shadow-lg">
+            <Title3 className="mb-4 text-center">
+              Fabricación a medida
+            </Title3>
+            <Paragraph>
+              A diferencia de otras empresas, en Titan Flex no solo distribuimos productos, sino que fabricamos mangueras industriales y terminales a medida para aplicaciones específicas. Nos aseguramos de que cada producto cumpla con los requisitos exactos de nuestros clientes, garantizando durabilidad, seguridad y rendimiento.
+            </Paragraph>
+          </div>
+          
+          <!-- Diferencial 3 -->
+          <div class="bg-base-100 dark:bg-base-dark-900 p-6 rounded-xl shadow-lg">
+            <Title3 className="mb-4 text-center">
+              Atención personalizada
+            </Title3>
+            <Paragraph>
+              Nuestro equipo de expertos está comprometido con ofrecer un servicio personalizado. No creemos en soluciones estándar, sino en diseñar lo que mejor se adapta a las necesidades particulares de cada cliente. Además, ofrecemos asesoría técnica durante todo el proceso, desde la selección de productos hasta la postventa.
+            </Paragraph>
+          </div>
+          
+          <!-- Diferencial 4 -->
+          <div class="bg-base-100 dark:bg-base-dark-900 p-6 rounded-xl shadow-lg">
+            <Title3 className="mb-4 text-center">
+              Agilidad en la entrega
+            </Title3>
+            <Paragraph>
+              En Titan Flex entendemos que el tiempo es crucial en el mundo industrial. Por eso, nos destacamos por nuestra capacidad de respuesta ágil y entrega oportuna. Nos aseguramos de que nuestros clientes reciban los productos necesarios en el menor tiempo posible, sin sacrificar la calidad.
+            </Paragraph>
+          </div>
+          
+          <!-- Diferencial 5 -->
+          <div class="bg-base-100 dark:bg-base-dark-900 p-6 rounded-xl shadow-lg">
+            <Title3 className="mb-4 text-center">
+              Compromiso con la innovación
+            </Title3>
+            <Paragraph>
+              El sector industrial está en constante evolución, y nosotros nos mantenemos a la vanguardia de las nuevas tecnologías y tendencias. Trabajamos para ofrecer soluciones innovadoras, tanto en diseño como en procesos productivos, mejorando continuamente la eficiencia y la durabilidad de nuestros productos.
+            </Paragraph>
+          </div>
+          
+          <!-- Diferencial 6 -->
+          <div class="bg-base-100 dark:bg-base-dark-900 p-6 rounded-xl shadow-lg">
+            <Title3 className="mb-4 text-center">
+              Compromiso postventa
+            </Title3>
+            <Paragraph>
+              En Titan Flex, no solo entregamos productos, sino que nos comprometemos a mantener relaciones de largo plazo con nuestros clientes. Acompañamos a cada cliente después de la venta, ofreciendo soporte técnico y mantenimiento para asegurar el buen funcionamiento de nuestras soluciones.
+            </Paragraph>
+          </div>
+        </div>
+      </Container>
+    </section>
+  </main>
+</Layout>

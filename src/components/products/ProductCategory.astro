@@ -1,0 +1,65 @@
+---
+import Container from "../shared/Container.astro";
+import Title3 from "../shared/Title3.astro";
+import Paragraph from "../shared/Paragraph.astro";
+import ProductList from "./ProductList.astro";
+import ProductCarousel from "./ProductCarousel.astro";
+
+export interface Props {
+  category: string;
+  description: string;
+  products: any[];
+  visualPlaceholder: string;
+  position: "left" | "right";
+  bgColor?: string;
+}
+
+const { 
+  category, 
+  description, 
+  products, 
+  visualPlaceholder,
+  position = "left",
+  bgColor = "bg-base-200 dark:bg-base-dark-800"
+} = Astro.props;
+
+const flexDirection = position === "right" ? "md:flex-row-reverse" : "md:flex-row";
+---
+
+<section class={`py-12 ${bgColor}`}>
+  <Container>
+    <div class={`flex flex-col ${flexDirection} gap-10 items-start`}>
+      <!-- Contenido de texto y productos -->
+      <div class="w-full md:w-7/12 lg:w-8/12">
+        <Title3 className="mb-4">
+          {category}
+        </Title3>
+        <Paragraph className="mb-6">
+          {description}
+        </Paragraph>
+        
+        <!-- Lista de productos de esta categoría -->
+        <ProductList products={products} />
+      </div>
+      
+      <!-- Carrusel de imágenes (placeholder) -->
+      <div class="w-full md:w-5/12 lg:w-4/12 bg-gray-50 dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg">
+        <div class="carousel-placeholder h-[400px] relative">
+          <!-- Placeholder para el futuro carrusel -->
+          <ProductCarousel 
+            images={[visualPlaceholder]}
+            title={category}
+          />
+          
+          <!-- Overlay con texto indicando que es un placeholder -->
+          <div class="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center">
+            <div class="text-center text-white p-6">
+              <p class="text-lg font-medium mb-2">Galería de productos</p>
+              <p class="text-sm">Próximamente podrás ver aquí imágenes detalladas de nuestros productos</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </Container>
+</section>

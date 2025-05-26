@@ -1,0 +1,99 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Container from "../components/shared/Container.astro";
+import Title2 from "../components/shared/Title2.astro";
+import Title3 from "../components/shared/Title3.astro";
+import SubTitle2 from "../components/shared/SubTitle2.astro";
+import GradiantText from "../components/shared/GradiantText.astro";
+import Paragraph from "../components/shared/Paragraph.astro";
+import BtnLink from "../components/shared/BtnLink.astro";
+import ProductCarousel from "../components/products/ProductCarousel.astro";
+import ProductCategory from "../components/products/ProductCategory.astro";
+import { productData } from "../components/products/data.ts";
+import CtaButton from "../components/shared/CtaButton.astro";
+
+// Usamos el favicon existente como placeholder para todas las imágenes
+const placeholderImage = "/favicon.svg";
+---
+
+<Layout title="Productos - Titan Flex">
+  <main class="pt-32 pb-16 flex flex-col gap-y-16 md:gap-y-24 overflow-hidden">
+    <!-- Header de la sección de productos -->
+    <section id="productos-header" class="pt-8 pb-0">
+      <Container>
+        <div class="max-w-3xl mx-auto text-center mb-10">
+          <SubTitle2 className="mt-4">
+            Soluciones en mangueras y accesorios para cada necesidad
+          </SubTitle2>
+        </div>
+        <div class="max-w-4xl mx-auto">
+          <Paragraph className="text-center mb-6">
+            En Titan Flex disponemos de una amplia gama de mangueras industriales y accesorios diseñados para 
+            satisfacer las necesidades más exigentes de diversos sectores productivos. Cada producto está fabricado 
+            con los más altos estándares de calidad, garantizando durabilidad, resistencia y un rendimiento óptimo.
+          </Paragraph>
+        </div>
+      </Container>
+    </section>
+    
+    <!-- Mangueras Hidráulicas -->
+    <ProductCategory 
+      category="Mangueras Hidráulicas"
+      description="Nuestras mangueras hidráulicas están diseñadas para soportar altas presiones y condiciones de trabajo exigentes. Ideales para maquinaria pesada, equipos industriales y aplicaciones de alta demanda."
+      products={productData.hydraulic}
+      visualPlaceholder={placeholderImage}
+      position="right"
+      bgColor="bg-base-200 dark:bg-base-dark-800 border-2 dark:border-gray-600 shadow-sm"
+    />
+    
+    <!-- Mangueras Industriales -->
+    <ProductCategory 
+      category="Mangueras Industriales"
+      description="Nuestra línea de mangueras industriales ofrece soluciones para transporte de líquidos, gases y materiales abrasivos en diversos entornos industriales, agrícolas y de construcción."
+      products={productData.industrial}
+      visualPlaceholder={placeholderImage}
+      position="left"
+      bgColor="bg-white dark:bg-base-dark-900 border dark:border-gray-700"
+    />
+    
+    <!-- Mangueras Alimenticias -->
+    <ProductCategory 
+      category="Mangueras Alimenticias"
+      description="Mangueras especialmente diseñadas para el manejo seguro e higiénico de productos alimenticios, bebidas y líquidos que requieren cumplir con normativas sanitarias estrictas."
+      products={productData.food}
+      visualPlaceholder={placeholderImage}
+      position="right"
+      bgColor="bg-base-200 dark:bg-base-dark-800 border-2 border-gray-300 dark:border-gray-600 shadow-sm"
+    />
+    
+    <!-- Accesorios y Conectores -->
+    <ProductCategory 
+      category="Accesorios y Conectores"
+      description="Complementa tus mangueras con nuestra amplia gama de accesorios y conectores, diseñados para garantizar un sellado perfecto y un funcionamiento óptimo en cualquier aplicación."
+      products={productData.accessories}
+      visualPlaceholder={placeholderImage}
+      position="left"
+      bgColor="bg-white dark:bg-base-dark-900 border  dark:border-gray-700"
+    />
+    
+    <!-- Call to Action final -->
+    <section class="py-16 bg-primary bg-opacity-10 dark:bg-opacity-5 rounded-t-3xl">
+      <Container>
+        <div class="max-w-3xl mx-auto text-center">
+          <Title3 className="mb-4">
+            ¿No encuentras lo que buscas?
+          </Title3>
+          <Paragraph className="mb-8">
+            Si necesitas un producto específico o tienes dudas sobre cuál es la mejor solución para tu necesidad, 
+            nuestro equipo de expertos está listo para asesorarte y encontrar la opción ideal para tu industria.
+          </Paragraph>
+          <div class="flex gap-4 justify-center">
+            <a href="/contacto" class="inline-block">
+              <CtaButton>Contáctanos</CtaButton>
+            </a>
+          </div>
+        </div>
+      </Container>
+    </section>
+  </main>
+</Layout>
