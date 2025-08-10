@@ -50,12 +50,12 @@ for (let i = 0; i < innovationsSection.innovations.length; i += 2) {
             <div class={`flex flex-col gap-10 lg:gap-12 ${flexRow} mx-auto max-w-7xl w-full`}>
               {/* Imagen (una por fila) */}
               <div class="max-w-md mx-auto midmd:max-w-none lg:mx-0 lg:pr-10 xl:pr-2 flex w-11/12 midmd:w-4/12 lg:w-5/12 midmd:h-full flex-shrink-0">
-                <div class="w-full h-full  top-24">
+                <div class="w-full h-full top-24">
                   <LazyImage
                     src={group.visual}
                     alt="banner image"
                     width="400"
-                    class="rounded-3xl object-cover h-full w-full min-h-[350px]"
+                    class="rounded-3xl object-cover w-full aspect-[4/3] max-h-[400px]"
                   />
                 </div>
               </div>

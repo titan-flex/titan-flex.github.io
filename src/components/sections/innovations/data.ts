@@ -1,6 +1,6 @@
-import imgGrid from "./assets/inno-grid.webp";
-import imgSolar from "./assets/inno-panel.webp";
-import imgWind from "./assets/inno-wind.webp";
+import imgGrid from "./assets/inno-grid.jpg";
+import imgSolar from "./assets/inno-panel.jpg";
+import imgWind from "./assets/inno-wind.jpg";
 
 export const innovationsSection = {
   title: "Preguntas Frecuentes",
