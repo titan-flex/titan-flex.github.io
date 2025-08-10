@@ -9,6 +9,21 @@ export interface Props {
   }[];
 }
 
+// Función para crear un slug a partir del título del producto
+function createSlug(title: string): string {
+  return title
+    .toLowerCase()
+    .replace(/[áàäâ]/g, 'a')
+    .replace(/[éèëê]/g, 'e')
+    .replace(/[íìïî]/g, 'i')
+    .replace(/[óòöô]/g, 'o')
+    .replace(/[úùüû]/g, 'u')
+    .replace(/ñ/g, 'n')
+    .replace(/[^a-z0-9]/g, '-')
+    .replace(/-+/g, '-')
+    .replace(/^-|-$/g, '');
+}
+
 const { products } = Astro.props;
 ---
 
@@ -54,7 +69,7 @@ const { products } = Astro.props;
       )}
       
       <div class="mt-4 flex justify-end">
-        <a href="#" class="text-primary hover:text-primary-hover font-medium text-sm flex items-center">
+        <a href={`/producto/${createSlug(product.title)}`} class="text-primary hover:text-primary-hover font-medium text-sm flex items-center">
           Ver detalles
           <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />

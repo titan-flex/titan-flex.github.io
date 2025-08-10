@@ -1,0 +1,179 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Container from "../../components/shared/Container.astro";
+import Title2 from "../../components/shared/Title2.astro";
+import ProductCarousel from "../../components/products/ProductCarousel.astro";
+import { productData } from "../../components/products/data";
+
+// Definir tipos
+interface Product {
+  title: string;
+  description: string;
+  variants?: string[];
+  diameters?: string[];
+  specs?: string[];
+}
+
+interface ProductWithMeta extends Product {
+  category: string;
+  slug: string;
+}
+
+// Esta función genera todas las rutas estáticas posibles
+export async function getStaticPaths() {
+  // Función para crear un slug a partir del título del producto
+  function createSlugInner(title: string): string {
+    return title
+      .toLowerCase()
+      .replace(/[áàäâ]/g, 'a')
+      .replace(/[éèëê]/g, 'e')
+      .replace(/[íìïî]/g, 'i')
+      .replace(/[óòöô]/g, 'o')
+      .replace(/[úùüû]/g, 'u')
+      .replace(/ñ/g, 'n')
+      .replace(/[^a-z0-9]/g, '-')
+      .replace(/-+/g, '-')
+      .replace(/^-|-$/g, '');
+  }
+
+  // Obtener todos los productos de todas las categorías
+  const allProducts: ProductWithMeta[] = [];
+  
+  Object.keys(productData).forEach(category => {
+    (productData as any)[category].forEach((product: Product) => {
+      allProducts.push({
+        ...product,
+        category,
+        slug: createSlugInner(product.title)
+      });
+    });
+  });
+  
+  return allProducts.map(product => ({
+    params: { slug: product.slug },
+    props: { product }
+  }));
+}
+
+const { product }: { product: ProductWithMeta } = Astro.props;
+const categoryNames: Record<string, string> = {
+  hydraulic: "Mangueras Hidráulicas",
+  industrial: "Mangueras Industriales", 
+  food: "Mangueras Alimenticias",
+  accessories: "Accesorios y Conectores"
+};
+
+const categoryName = categoryNames[product.category] || product.category;
+---
+
+<Layout title={`${product.title} - Titan Flex`}>
+  <main class="pt-32 pb-16 overflow-hidden">
+    <!-- Breadcrumb -->
+    <section class="pt-8 pb-4">
+      <Container>
+        <nav class="flex text-sm text-gray-600 dark:text-gray-400">
+          <a href="/" class="hover:text-primary">Inicio</a>
+          <span class="mx-2">/</span>
+          <a href="/productos" class="hover:text-primary">Productos</a>
+          <span class="mx-2">/</span>
+          <span class="text-gray-900 dark:text-white">{product.title}</span>
+        </nav>
+      </Container>
+    </section>
+
+    <!-- Detalle del producto -->
+    <section class="py-12">
+      <Container>
+        <div class="max-w-4xl mx-auto">
+          <!-- Encabezado -->
+          <div class="text-center mb-12">
+            <p class="text-primary mb-2 font-medium">{categoryName}</p>
+            <Title2 className="mb-4">{product.title}</Title2>
+          </div>
+
+          <!-- Imagen del producto -->
+          <div class="text-center mb-12">
+            <div class="max-w-md mx-auto bg-gray-50 dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg">
+              <div class="h-[400px] relative">
+                <ProductCarousel 
+                  images={[`/images/productos/${product.slug}.jpg`]}
+                  title={product.title}
+                />
+                
+                <!-- Overlay con información del producto -->
+                <div class="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center">
+                  <div class="text-center text-white p-6">
+                    <p class="text-lg font-medium mb-2">{product.title}</p>
+                    <p class="text-sm">{categoryName}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Producto en formato similar a ProductList -->
+          <div class="border-2 border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 rounded-lg p-8 shadow-sm">
+            <h4 class="font-medium text-xl mb-4 text-gray-900 dark:text-white">{product.title}</h4>
+            
+            {product.variants && (
+              <div class="mb-6">
+                <p class="text-sm text-gray-700 dark:text-gray-300 font-medium mb-2">Modelos disponibles:</p>
+                <div class="flex flex-wrap gap-2">
+                  {product.variants.map((variant) => (
+                    <span class="text-xs bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 px-3 py-1 rounded-full">
+                      {variant}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )}
+            
+            {product.diameters && (
+              <div class="mb-6">
+                <p class="text-sm text-gray-700 dark:text-gray-300 font-medium mb-2">Diámetros disponibles:</p>
+                <div class="flex flex-wrap gap-2">
+                  {product.diameters.map((diameter) => (
+                    <span class="text-xs bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 px-3 py-1 rounded-full">
+                      {diameter}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )}
+            
+            <p class="text-gray-600 dark:text-gray-400 mb-6">{product.description}</p>
+            
+            {product.specs && (
+              <div class="mb-6">
+                <p class="text-sm text-gray-700 dark:text-gray-300 font-medium mb-2">Especificaciones técnicas:</p>
+                <ul class="list-disc list-inside text-sm text-gray-600 dark:text-gray-400 space-y-1">
+                  {product.specs.map((spec) => (
+                    <li>{spec}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
+            
+            <!-- Call to Action -->
+            <div class="mt-8 pt-6 border-t border-gray-200 dark:border-gray-700">
+              <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="/contacto" class="text-primary hover:text-primary-hover font-medium text-sm flex items-center justify-center">
+                  Solicitar cotización
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                  </svg>
+                </a>
+                <a href="/productos" class="text-primary hover:text-primary-hover font-medium text-sm flex items-center justify-center">
+                  Ver más productos
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </Container>
+    </section>
+  </main>
+</Layout>
